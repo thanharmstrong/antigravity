@@ -3,4 +3,10 @@
 .kiro/
 .opencode/
 .windsurf/
-projects/image-ai/
+projects/
+.env
+.env.local
+.DS_Store
+node_modules/
+affiliate-assistant/
+antigravity-dashboard/
