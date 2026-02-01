@@ -1,0 +1,41 @@
+# GLOBAL WORKSPACE RULES
+
+## 0. CONTEXT & ZONES
+- SCOPE: Monorepo. Root=`AI/`, Projects=`projects/`.
+- ZONE_WEB: Path `projects/web-*` OR `package.json` exists.
+  -> STACK: Next.js 15, TS, Tailwind, Shadcn, Lucide.
+- ZONE_AI: Path `projects/ai-*` OR `requirements.txt` exists.
+  -> STACK: Python 3.10+, Gradio, FastAPI, Hugging Face SDK.
+- ISOLATION: Projects must not import cross-project code.
+
+## 1. SECURITY (STRICT)
+- SECRETS: NEVER hardcode keys/tokens.
+  - Web: `process.env.NEXT_PUBLIC_` (client) / `process.env` (server).
+  - AI: `os.environ.get("KEY")`.
+- GIT: `.env`, `node_modules`, `__pycache__` must be in `.gitignore`.
+- VALIDATION:
+  - Web: Zod schemas for all inputs.
+  - AI: Type hints + Pydantic.
+
+## 2. CODING STANDARDS: WEB
+- LANG: TypeScript Strict. No `any`. Use Interfaces.
+- STYLE: Tailwind via `cn()` utility. No inline styles.
+- COMPONENT: Functional, named export (`export function Name`).
+- IMPORT: Absolute (`@/components`).
+- REF: `.agent/skills/typescript-advanced-types`, `.agent/skills/shadcn-ui`.
+
+## 3. CODING STANDARDS: AI
+- LANG: Python 3.10+. Type Hints required (`def f(x: int) -> int:`).
+- DEPS: Update `requirements.txt` immediately on import.
+- ENTRY: `app.py` is main. Keep logic in separate modules.
+- UI: Use Gradio for demos.
+
+## 4. ANTI-HALLUCINATION
+- FILES: Verify file existence before edit. Do not guess paths.
+- LIBS: Check `package.json` or `requirements.txt` before importing.
+- MOCK: Use separate constants file for dummy data. No hardcoded magic strings in UI.
+
+## 5. WORKFLOWS
+- NEW WEB: Run `/create-site` -> Read `.agent/workflows/create-site.md`
+- NEW AI: Run `/create-space` -> Read `.agent/workflows/create-space.md`
+- DEPLOY: Web -> GitHub push. AI -> HF Space push.
