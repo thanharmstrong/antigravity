@@ -1,12 +1,38 @@
-.agents/
+# --- 1. SECURITY (QUAN TRỌNG NHẤT) ---
+.env
+.env.local
+.env.*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# --- 2. IDE & AI CACHE (Nên Ignore) ---
 .gemini/
 .kiro/
 .opencode/
 .windsurf/
-projects/
-.env
-.env.local
+.cursor/
+.vscode/
+.idea/
 .DS_Store
+
+# --- 3. DEPENDENCIES & BUILD (Tự động áp dụng cho mọi thư mục con) ---
 node_modules/
+dist/
+build/
+
+# --- 4. NEXT.JS SPECIFIC (Cho Web Client) ---
+.next/
+out/
+next-env.d.ts
+
+# --- 5. PYTHON / HUGGING FACE (Cho AI Service) ---
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# --- 6. EXCLUDED PROJECTS (Dự án cũ không muốn lưu) ---
 affiliate-assistant/
 antigravity-dashboard/
