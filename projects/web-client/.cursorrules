@@ -1,0 +1,4 @@
+# Project Rules
+1. SKILLS: Always refer to skills in `../../.agent/skills/` for best practices.
+2. TYPESCRIPT: Refuse to generate code with `any`. Check `../../.agent/skills/typescript-advanced-types/SKILL.md` for defining Zod schemas and Interfaces.
+3. UI: Use Shadcn components. For custom styling, use Tailwind utility classes/variables in `src/app/globals.css`.
