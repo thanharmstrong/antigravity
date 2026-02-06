@@ -36,3 +36,6 @@ venv/
 # --- 6. EXCLUDED PROJECTS (Dự án cũ không muốn lưu) ---
 affiliate-assistant/
 antigravity-dashboard/
+
+# Ignore GitHub Actions workflow
+.github/workflows/sync-to-hub.yml
